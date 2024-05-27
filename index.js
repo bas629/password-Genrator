@@ -39,11 +39,12 @@ function handleslider()
     passwordLength.innerText =password; 
 }
 
-handleslider();
+
 
 sliber.addEventListener("input" , (e) =>
 {
     password=e.target.value;
+    console.log(  "headslider"+" "+password);
   handleslider(); 
 
 });
@@ -54,46 +55,54 @@ sliber.addEventListener("input" , (e) =>
 
 
 //cheakBoX event
-uppercase.addEventListener('change',()=>{if(uppercase.checked==true){
+uppercase.addEventListener('change',()=>{if(uppercase.checked===true){
    
     cheaklist++;
 }
 else
 {
     cheaklist--;
+    console.log("ok:"+cheaklist);
 }
 
 });
-lowercase.addEventListener('change',()=>{if(lowercase.checked==true)
+lowercase.addEventListener('change',()=>{if(lowercase.checked===true)
     {
         cheaklist++; 
     } 
     else{
         cheaklist--;
+        console.log("ok:"+cheaklist);
     }
-} );
-numbers.addEventListener('change',()=>{if(numbers.checked==true)
+    }
+ );
+numbers.addEventListener('change',()=>{if(numbers.checked===true)
     {
         cheaklist++;
     }
     else{
         cheaklist--;
+        console.log("ok: "+cheaklist);
     }
-});
-symbols.addEventListener("change",()=>{ if(symbols.checked==true){
+    }
+);
+symbols.addEventListener("change",()=>{ if(symbols.checked===true){
   cheaklist++;
 
 }
 else{
     cheaklist--;
+
+    console.log("ok:"+cheaklist);
+
 }   }); 
 
 
 // password Genrator 
 
 function generateRandomNumber(min,max)
-{ console.log(Math.floor(Math.random()*(max-min) ) + min);
-  return  Math.floor(Math.random() * (max - min)) + min;;
+{
+  return  Math.floor(Math.random() * (max - min)) + min;
   
 
 }
@@ -149,7 +158,9 @@ catch(e){
 // password Genrated
 
 function randomPassword()
-{ if(cheaklist==0)
+{ 
+    
+    if(cheaklist==0)
     {
         return ;
     }
@@ -158,29 +169,38 @@ else
 {let  passwordCreate =""; 
 
 display.value=passwordCreate; 
-let i=1; 
+let i=1;  
+console.log(password+" "+cheaklist);
+handleslider();
+ if(password < cheaklist)
+    {  
+        password=cheaklist;
+     
+        console.log(password);
+    }
 while(i<=password)
  { 
     let j= generateRandomNumber(1,5);
-   if(j=1 && uppercase.checked==true)
+    
+   if(j===1 && uppercase.checked==true)
     {
         passwordCreate=passwordCreate+randomUppercase();
         i++;
     }
 
-    if(j=2 && lowercase.checked==true)
+    if(j===2 && lowercase.checked===true)
         {
             passwordCreate=passwordCreate+randomLowercase();
         i++;
         }
 
-        if(j=3 && numbers.checked==true)
+        if(j===3 && numbers.checked===true)
             {
                 passwordCreate=passwordCreate+(randomNumders() );
                 i++;
             }
 
-            if(j=4 && symbols.checked==true)
+            if(j===4 && symbols.checked===true)
                 {
                     passwordCreate=passwordCreate+randomSymbols();
                     i++;
@@ -192,7 +212,7 @@ while(i<=password)
 
 
 
-console.log(passwordCreate);
+ password=sliber.value;
 
  display.value=passwordCreate; 
 

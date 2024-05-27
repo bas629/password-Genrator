@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Genrator</title>
+</head>
+<body>
+    <div class="continer">
+    <h1>Password Generator</h1>
+     <div class="display">
+       <input placeholder="Password" readonly class="display" id="showpassword" password-show-display  >
+      <button id="copyButtom">
+      <img src="copy-logo.png"  width="30px"   alt="Copyied">
+       <p id="copyUpdate"></p>
+      </button>
+      
+    </div>
+     <div class="password-length">
+     <p>Password Length</p> 
+      <p id="length">0</p>
+
+     </div>
+     <div class="password-length-slider">
+        <input type="range" min="1" max="20" id="slider" >
+     </div>
+      <div>
+        <input type="checkbox" id="uppercase" checked>
+        <label for="uppercase">Include uppercase latter</label>
+
+      </div>   
+      <div>
+        <input type="checkbox" id="lowercase">
+        <label for="lowercase">Include Lower latter</label>
+
+      </div>   
+      <div>
+        <input type="checkbox" id="numbers">
+        <label for="numbers">Include Numbers</label>
+
+      </div>   
+      <div>
+        <input type="checkbox" id="symbols">
+        <label for="symbols">Include symbols</label>
+
+      </div>   
+
+    <div>
+     <p>Strenght</p>
+  </div>
+   
+   <button password-genrated-button>Generator Password</button>
+
+
+    </div> 
+    
+</body>
+<script src="index.js"></script>
+</html>

@@ -141,6 +141,7 @@ else
   try{
      await navigator.clipboard.writeText(display.value);
      copyUpdate.innerText = "Copied";
+     
    
   }
 catch(e){
@@ -148,11 +149,31 @@ catch(e){
     copyUpdate.innerText = "Fail";
   }
 
-
-
+  setTimeout( () => {
+    copyUpdate.style.display="none";
+},2000);
+copyUpdate.style.display="block";
 }
 
 }
+
+function reSuffle(array)
+{
+  for(let i=0;i<array.length;i++ )
+    { let a=parseInt(generateRandomNumber(0,array.length));
+          let b=parseInt(generateRandomNumber(0,array.length));
+          let c=array[a];
+          let d=array[b];
+         array[a]=d;
+         array[b]=c;
+          
+    } 
+    let str = "";
+    array.forEach((el) => (str += el));
+    return str;
+
+}
+
 
 
 // password Genrated
@@ -178,11 +199,52 @@ handleslider();
      
         console.log(password);
     }
+  
+
+
+
+     if( i<=password  &&  uppercase.checked===true)
+        {
+            passwordCreate=passwordCreate+randomUppercase();
+             i++;
+        } 
+      
+    
+        if(i<=password && lowercase.checked===true)
+            {
+                passwordCreate=passwordCreate+randomLowercase();
+            i++;
+            }
+         
+            
+            if(i<=password && numbers.checked===true)
+                {
+                    passwordCreate=passwordCreate+(randomNumders() );
+                    i++;
+                }
+               
+                
+                if( i<=password && symbols.checked===true)
+                    {
+                        passwordCreate=passwordCreate+randomSymbols();
+                        i++;
+                    }
+
+
+
+
+
+  
+
+
+
+
+
 while(i<=password)
  { 
     let j= generateRandomNumber(1,5);
     
-   if(j===1 && uppercase.checked==true)
+   if(j===1 && uppercase.checked===true)
     {
         passwordCreate=passwordCreate+randomUppercase();
         i++;
@@ -213,7 +275,8 @@ while(i<=password)
 
 
  password=sliber.value;
-
+ 
+ passwordCreate=reSuffle(Array.from(passwordCreate));
  display.value=passwordCreate; 
 
 }
